@@ -56,6 +56,15 @@ app.post("/api/contact",function(req, res){
     })
 })
 
+app.delete("/api/contact/:id",function(req,res){
+    model.deleteOne({"_id":req.params.id}).then(function(){
+        return res.status(200).json({"Message":"Success"})
+    }).catch(function(err){
+        console.log("Database returned error", err);
+        return res.status(500).json({"Message":"Internal server error"})
+})
+})
+
 
 app.listen(3000);
 
