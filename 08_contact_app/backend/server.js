@@ -35,7 +35,7 @@ app.get("/api/contact",function(req,res){
     })
 })
 
-app.post("/api/contact",function(res,req){
+app.post("/api/contact",function(req, res){
     if(!req.body){
         return res.status(400).json({"Message":"Bad Request"})
     }
@@ -48,7 +48,7 @@ app.post("/api/contact",function(res,req){
         "email":req.body.email,
         "phone":req.body.phone,
     })
-    model.save().then(function(contact){
+    contact.save().then(function(contact){
         return res.status(201).json(contact)
     }).catch(function(err){
         console.log("Database returned error", err);
